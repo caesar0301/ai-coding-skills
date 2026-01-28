@@ -8,36 +8,19 @@ This repository contains skills that can be installed and used with Claude Code 
 
 ## Installation
 
-Skills are installed by copying them to your project's `.claude/skills/` directory:
+### Install from Claude Code Marketplace
 
-1. **Navigate to your project directory:**
-   ```bash
-   cd /path/to/your/project
-   ```
+Install skill categories directly using the **Claude Code CLI**:
 
-2. **Create the skills directory (if it doesn't exist):**
-   ```bash
-   mkdir -p .claude/skills
-   ```
+```bash
+# Add the marketplace
+/plugin marketplace add caesar0301/ai-coding-skills
+```
+### Install using npx ai-agent-skills
 
-3. **Copy the desired skill from this repository:**
-   ```bash
-   # For the platonic-coding-specs skill:
-   cp -r /path/to/ai-coding-skills/platonic-coding-specs .claude/skills/
-   ```
-
-   Or if you're cloning this repository:
-   ```bash
-   git clone <repository-url>
-   cp -r ai-coding-skills/platonic-coding-specs .claude/skills/
-   ```
-
-4. **Verify installation:**
-   ```bash
-   ls -la .claude/skills/
-   ```
-
-   You should see the skill directory (e.g., `platonic-coding-specs/`).
+```
+npx ai-agent-skills install caesar0301/ai-coding-skills
+```
 
 ## Available Skills
 
