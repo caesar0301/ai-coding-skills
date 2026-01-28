@@ -74,39 +74,19 @@ If using Claude Code CLI with marketplace support:
 claude-code marketplace add caesar0301/platonic-coding-skills
 ```
 
-### Method 2: Clone to Skills Directory (Recommended for Most)
+### Method 2: Install using npx skills (Recommended for Most)
+
+```bash
+npx skills add caesar0301/platonic-coding-skills
+```
+
+### Method 3: Clone to Skills Directory
 
 Clone this repository to your agent's skills directory:
 
 ```bash
-# For Claude Code / Cursor / Windsurf
 git clone https://github.com/caesar0301/platonic-coding-skills.git ~/.claude/skills/platonic-coding-skills
-
-# Or use a custom skills directory
-git clone https://github.com/caesar0301/platonic-coding-skills.git /path/to/your/skills/platonic-coding-skills
 ```
-
-### Verify Installation
-
-**For Claude Code CLI users:**
-```bash
-claude-code
-> /skills list
-# You should see: platonic-coding-specs, review-code-per-specs
-```
-
-**For manual installation users:**
-```bash
-# List skills directory
-ls ~/.claude/skills/
-
-# You should see:
-# - platonic-coding-specs/
-# - review-code-per-specs/
-```
-
-**For all users:**  
-Ask your AI agent: "List available skills" or "What skills do you have?"
 
 ## Examples
 
