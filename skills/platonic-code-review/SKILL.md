@@ -236,7 +236,7 @@ Otherwise, default to report generation only.
 ## Integration with Other Skills
 
 Works well with:
-- **platonic-coding-specs**: Review code against RFCs managed by this skill
+- **platonic-code-specs**: Review code against RFCs managed by this skill
 - **Documentation skills**: Generate docs from review findings
 - **Testing skills**: Create tests for missing coverage
 

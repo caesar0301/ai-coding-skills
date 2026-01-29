@@ -31,7 +31,7 @@ By defining the system's form through RFCs before writing code, agents operated 
 
 ## Available Skills
 
-### 📋 platonic-coding-specs
+### 📋 platonic-code-specs
 
 Manage RFC-style specifications with AI-driven operations.
 
@@ -44,7 +44,7 @@ Manage RFC-style specifications with AI-driven operations.
 
 **Use when:** Managing technical specifications, RFCs, documentation standards, terminology systems
 
-[**→ Full Documentation**](skills/platonic-coding-specs/README.md)
+[**→ Full Documentation**](skills/platonic-code-specs/README.md)
 
 ---
 
@@ -94,7 +94,7 @@ git clone https://github.com/caesar0301/platonic-coding-skills.git ~/.claude/ski
 
 ```
 I'm starting a new project called "AI Assistant Platform".
-Use the platonic-coding-specs skill to initialize the 
+Use the platonic-code-specs skill to initialize the 
 specification system in ./docs/specs/
 ```
 
@@ -112,7 +112,7 @@ correctly implements all requirements from specs/rfc-001-authentication.md
 ### Example 3: Maintain Specifications
 
 ```
-Use the platonic-coding-specs skill to refine all 
+Use the platonic-code-specs skill to refine all 
 specifications in ./specs/, checking consistency and 
 regenerating all index files.
 ```
@@ -134,7 +134,7 @@ all RFCs in ./specs/ and the implementation in ./src/
 
 ```
 # Step 1: Create specification
-Use platonic-coding-specs to create a new RFC for the user authentication feature
+Use platonic-code-specs to create a new RFC for the user authentication feature
 
 # Step 2: Implement the feature
 [You implement the code]
@@ -144,14 +144,14 @@ Use platonic-code-review to verify src/auth/ implements
 specs/rfc-001-auth.md completely
 
 # Step 4: Update documentation
-Use platonic-coding-specs to update the RFC history and index
+Use platonic-code-specs to update the RFC history and index
 ```
 
 ### Workflow 2: Code Review Before Merge
 
 ```
 # Review both specs and code
-1. Use platonic-coding-specs to validate specs consistency
+1. Use platonic-code-specs to validate specs consistency
 2. Use platonic-code-review to check PR changes against all relevant RFCs
 3. Generate compliance report
 4. Fix any discrepancies before merge
@@ -162,7 +162,7 @@ Use platonic-coding-specs to update the RFC history and index
 ```
 # Document existing code
 1. Use platonic-code-review to analyze src/ and identify undocumented features
-2. Use platonic-coding-specs to create RFCs for undocumented features
+2. Use platonic-code-specs to create RFCs for undocumented features
 3. Use platonic-code-review to verify RFCs accurately describe the code
 ```
 
@@ -171,7 +171,7 @@ Use platonic-coding-specs to update the RFC history and index
 ```
 # Regular maintenance
 Weekly:
-- Use platonic-coding-specs to refine specs (validate, update indices)
+- Use platonic-code-specs to refine specs (validate, update indices)
 - Use platonic-code-review to check new commits against specs
 
 Before releases:

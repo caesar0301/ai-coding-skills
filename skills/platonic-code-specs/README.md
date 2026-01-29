@@ -20,7 +20,7 @@ All operations are AI-driven using reference documents - no code required.
 Tell your AI agent:
 
 ```
-Read the platonic-coding-specs skill references/init-specs.md and initialize
+Read the platonic-code-specs skill references/init-specs.md and initialize
 specs for project "MyProject" in the ./specs directory
 ```
 
@@ -35,7 +35,7 @@ This creates:
 Run a comprehensive refinement:
 
 ```
-Read the platonic-coding-specs skill references/refine-specs.md and
+Read the platonic-code-specs skill references/refine-specs.md and
 apply it to my ./specs directory
 ```
 
@@ -59,7 +59,7 @@ The skill provides 8 operations:
 ## File Structure
 
 ```
-platonic-coding-specs/
+platonic-code-specs/
 ├── SKILL.md              # Agent Skills format definition
 ├── README.md             # This file
 ├── references/           # Reference documentation

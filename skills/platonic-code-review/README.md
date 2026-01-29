@@ -323,11 +323,11 @@ Use platonic-code-review to perform bi-directional analysis:
 
 ### Works Great With
 
-**platonic-coding-specs**:
+**platonic-code-specs**:
 ```
-1. Use platonic-coding-specs to maintain RFC specifications
+1. Use platonic-code-specs to maintain RFC specifications
 2. Use platonic-code-review to validate code against those RFCs
-3. Use platonic-coding-specs to update history with review findings
+3. Use platonic-code-specs to update history with review findings
 ```
 
 **Testing Skills**:

@@ -297,7 +297,7 @@ Templates use placeholders that are replaced during initialization:
 ## File Structure
 
 ```
-platonic-coding-specs/
+platonic-code-specs/
 ├── SKILL.md                           # Skill definition (this skill)
 ├── README.md                          # User-facing documentation
 ├── references/                        # Reference documentation

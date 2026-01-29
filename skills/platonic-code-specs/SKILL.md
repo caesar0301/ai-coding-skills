@@ -1,5 +1,5 @@
 ---
-name: platonic-coding-specs
+name: platonic-code-specs
 description: Manage RFC-style specifications with templates, validation, and dynamic generation of history, index, and namings files. Use when initializing specification systems, validating RFC documents, checking taxonomy compliance, or generating specification indices and terminology references.
 license: MIT
 metadata:

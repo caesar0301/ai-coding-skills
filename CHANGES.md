@@ -7,7 +7,7 @@ This document summarizes the changes made to align the platonic-coding-skills pr
 
 ## Changes Overview
 
-### 1. Restructured platonic-coding-specs Skill
+### 1. Restructured platonic-code-specs Skill
 
 **Directory Changes:**
 - ✅ Renamed `prompts/` → `references/` (Agent Skills standard)
@@ -79,7 +79,7 @@ This document summarizes the changes made to align the platonic-coding-skills pr
 
 ## Skills Summary
 
-### Skill 1: platonic-coding-specs
+### Skill 1: platonic-code-specs
 
 **Category:** Documentation  
 **Version:** 1.0.0  
@@ -97,7 +97,7 @@ This document summarizes the changes made to align the platonic-coding-skills pr
 
 **File Structure:**
 ```
-platonic-coding-specs/
+platonic-code-specs/
 ├── SKILL.md              # Agent Skills definition
 ├── README.md             # User documentation
 ├── references/           # Reference documentation
@@ -202,7 +202,7 @@ Both skills now fully comply with [Agent Skills specification](https://agentskil
 
 ### For Existing Users
 
-**If you were using platonic-coding-specs:**
+**If you were using platonic-code-specs:**
 - Update any references from `prompts/` to `references/`
 - Update any references from `templates/` to `assets/`
 - Otherwise, functionality is identical
@@ -219,16 +219,16 @@ Both skills now fully comply with [Agent Skills specification](https://agentskil
 ### Modified:
 - `.claude-plugin/marketplace.json`
 - `README.md`
-- `skills/platonic-coding-specs/SKILL.md`
-- `skills/platonic-coding-specs/README.md`
-- `skills/platonic-coding-specs/references/init-specs.md`
+- `skills/platonic-code-specs/SKILL.md`
+- `skills/platonic-code-specs/README.md`
+- `skills/platonic-code-specs/references/init-specs.md`
 
-### Renamed (platonic-coding-specs):
+### Renamed (platonic-code-specs):
 - `prompts/` → `references/`
 - `templates/` → `assets/`
 
 ### Created:
-- `skills/platonic-coding-specs/references/REFERENCE.md`
+- `skills/platonic-code-specs/references/REFERENCE.md`
 - `skills/platonic-code-review/` (entire directory)
 - `skills/platonic-code-review/SKILL.md`
 - `skills/platonic-code-review/README.md`

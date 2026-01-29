@@ -335,18 +335,18 @@ Quick reference for thorough review:
 
 ---
 
-## Integration with platonic-coding-specs
+## Integration with platonic-code-specs
 
 **Workflow**:
-1. Use `platonic-coding-specs` to maintain RFCs
+1. Use `platonic-code-specs` to maintain RFCs
 2. Use `platonic-code-review` to validate code against RFCs
 3. Review report identifies gaps/inconsistencies
 4. User decides: update specs or fix code
-5. Use `platonic-coding-specs` to update spec history
+5. Use `platonic-code-specs` to update spec history
 
 **Example**:
 ```
-1. Refine specs with platonic-coding-specs
+1. Refine specs with platonic-code-specs
 2. Review code: "Use platonic-code-review to validate 
    src/ against specs/"
 3. Get report with findings
