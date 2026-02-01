@@ -31,7 +31,7 @@ By defining the system's form through RFCs before writing code, agents operated 
 
 ## Available Skills
 
-This repository provides production-ready agent skills that enhance Platonic Coding. All skills follow the [Agent Skills specification](https://agentskills.io/specification) for maximum compatibility across AI coding agents.
+This repository provides production-ready Agent Skills that enhance Platonic Coding. All skills follow the [Agent Skills specification](https://agentskills.io/specification) for maximum compatibility across AI coding agents.
 
 ### 📋 platonic-code-specs
 
@@ -106,110 +106,87 @@ Clone this repository to your agent's skills directory:
 git clone https://github.com/caesar0301/platonic-coding-skills.git ~/.claude/skills/platonic-coding-skills
 ```
 
+## General Workflow
+
+Platonic Coding follows a four-phase flow: **design specs → implementation guide → code → review**. Each phase uses one or more of the available skills.
+
+| Phase | What you do | Skill(s) |
+|-------|-------------|----------|
+| **1. Create design specs** | Define requirements and architecture in RFCs. | platonic-code-specs |
+| **2. Create implementation guide** | Turn RFCs into concrete, language- and framework-specific technical designs. | platonic-impl-guide |
+| **3. AI agent writes code** | Implement the feature using the implementation guide (and RFCs) as the source of truth. | — |
+| **4. Review code against spec** | Check that the implementation matches specs and the guide; fix gaps. | platonic-code-review |
+
+This keeps meaning explicit, violations detectable, and evolution traceable. The **Examples** and **Practical Workflows** below show how to apply this flow with the available skills.
+
 ## Examples
 
-### Example 1: Initialize Project Specifications
+Examples are ordered by the general workflow: specs → impl guide → code (manual) → review. Each shows a single skill in action.
+
+### Example 1: Create design specs (Phase 1)
 
 ```
 I'm starting a new project called "AI Assistant Platform".
-Use the platonic-code-specs skill to initialize the 
-specification system in ./docs/specs/
+Use the platonic-code-specs skill to initialize the
+specification system in docs/specs/
 ```
 
-**Result:** Creates RFC specification system with standard, history, index, and namings files.
+**Result:** RFC specification system with standard, history, index, and namings files.
 
-### Example 2: Validate Code Against Specs
-
-```
-Use the platonic-code-review skill to verify that src/auth/ 
-correctly implements all requirements from specs/rfc-001-authentication.md
-```
-
-**Result:** Detailed compliance report showing what's implemented, what's missing, and what's inconsistent.
-
-### Example 3: Maintain Specifications
+### Example 2: Create implementation guide (Phase 2)
 
 ```
-Use the platonic-code-specs skill to refine all 
-specifications in ./specs/, checking consistency and 
-regenerating all index files.
+Use the platonic-impl-guide skill to create an implementation guide for
+RFC-001 (Authentication) targeting the auth module. Use TypeScript and
+the existing Express patterns in this repo.
+```
+
+**Result:** Implementation guide with module structure, types, interfaces, and implementation details aligned with the RFC.
+
+### Example 3: Implement from guide (Phase 3)
+
+```
+Implement the user authentication feature following docs/impl/rfc-001-auth-impl.md
+and docs/specs/rfc-001-authentication.md. Do not deviate from the spec or the guide.
+```
+
+**Result:** Code that matches the implementation guide and the RFC (no separate skill; the agent uses the docs as source of truth).
+
+### Example 4: Review code against spec (Phase 4)
+
+```
+Use the platonic-code-review skill to verify that src/auth/
+correctly implements all requirements from docs/specs/rfc-001-authentication.md.
+```
+
+**Result:** Compliance report showing what is implemented, what is missing, and what is inconsistent.
+
+### Example 5: Maintain specifications
+
+```
+Use the platonic-code-specs skill to refine all specifications in docs/specs/,
+check consistency, and regenerate history, index, and namings.
 ```
 
 **Result:** Validated specifications with updated history, index, and terminology files.
 
-### Example 4: Gap Analysis
+### Example 6: Gap analysis
 
 ```
-Use the platonic-code-review skill to identify gaps between 
-all RFCs in ./specs/ and the implementation in ./src/
+Use the platonic-code-review skill to identify gaps between
+all RFCs in docs/specs/ and the implementation in src/.
 ```
 
-**Result:** Bi-directional analysis showing unimplemented specs and undocumented code features.
+**Result:** Bi-directional analysis of unimplemented specs and undocumented code.
 
-### Example 5: Create Implementation Guide
-
-```
-Use platonic-impl-guide to create an implementation guide for 
-RFC-0042 (Message Queue Protocol) targeting the acme-queue crate.
-Use Rust with async/await patterns.
-```
-
-**Result:** Concrete implementation guide with module structure, types, interfaces, and implementation details that align with the RFC.
-
-## Practical Workflows
-
-### Workflow 1: New Feature Development
+### Example 7: Validate implementation guide
 
 ```
-# Step 1: Create specification
-Use platonic-code-specs to create a new RFC for the user authentication feature
-
-# Step 2 (optional): Create implementation guide
-Use platonic-impl-guide to create a technical design from the RFC
-
-# Step 3: Implement the feature
-[You implement the code]
-
-# Step 4: Validate implementation
-Use platonic-code-review to verify src/auth/ implements 
-specs/rfc-001-auth.md completely
-
-# Step 5: Update documentation
-Use platonic-code-specs to update the RFC history and index
+Use the platonic-impl-guide skill to validate that docs/impl/rfc-001-auth-impl.md
+does not contradict docs/specs/rfc-001-authentication.md.
 ```
 
-### Workflow 2: Code Review Before Merge
-
-```
-# Review both specs and code
-1. Use platonic-code-specs to validate specs consistency
-2. Use platonic-code-review to check PR changes against all relevant RFCs
-3. Generate compliance report
-4. Fix any discrepancies before merge
-```
-
-### Workflow 3: Legacy Code Documentation
-
-```
-# Document existing code
-1. Use platonic-code-review to analyze src/ and identify undocumented features
-2. Use platonic-code-specs to create RFCs for undocumented features
-3. Use platonic-code-review to verify RFCs accurately describe the code
-```
-
-### Workflow 4: Continuous Compliance
-
-```
-# Regular maintenance
-Weekly:
-- Use platonic-code-specs to refine specs (validate, update indices)
-- Use platonic-code-review to check new commits against specs
-
-Before releases:
-- Use platonic-code-review for comprehensive audit (Level 3)
-- Address all critical and high-priority gaps
-- Update specs for any intentional deviations
-```
+**Result:** Validation report confirming the guide is spec-compliant or listing contradictions to fix.
 
 ## License
 

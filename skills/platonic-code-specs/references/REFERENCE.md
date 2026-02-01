@@ -298,8 +298,7 @@ Templates use placeholders that are replaced during initialization:
 
 ```
 platonic-code-specs/
-├── SKILL.md                           # Skill definition (this skill)
-├── README.md                          # User-facing documentation
+├── SKILL.md                           # Skill definition and user-facing docs
 ├── references/                        # Reference documentation
 │   ├── REFERENCE.md                   # This file
 │   ├── init-specs.md                  # Initialize operation
@@ -412,6 +411,5 @@ This skill integrates well with:
 
 ## Related Resources
 
-- See README.md for quick start guide
-- See SKILL.md for skill definition
+- See SKILL.md for quick start and skill definition
 - See individual reference files for detailed operation instructions

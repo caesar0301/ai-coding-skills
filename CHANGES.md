@@ -40,7 +40,7 @@ platonic-impl-guide/
 - Traceability from implementation decisions back to specs
 
 **Also updated:**
-- `README.md` – Added platonic-impl-guide to Available Skills, Example 5, and Workflow 1 (optional step)
+- Root `README.md` – Added platonic-impl-guide to Available Skills, examples, and workflows; all skill links point to SKILL.md
 - `.claude-plugin/marketplace.json` – Registered platonic-impl-guide skill
 
 ---
@@ -57,8 +57,7 @@ platonic-impl-guide/
 - ✅ Renamed `templates/` → `assets/` (Agent Skills standard)
 
 **Files Updated:**
-- ✅ `SKILL.md` - Added metadata (version, author, category, license), improved structure
-- ✅ `README.md` - Complete rewrite with clearer documentation
+- ✅ `SKILL.md` - Added metadata (version, author, category, license), improved structure and docs
 - ✅ `references/REFERENCE.md` - NEW: Comprehensive operation guide (418 lines)
 - ✅ `references/init-specs.md` - Updated paths (templates → assets)
 
@@ -86,8 +85,7 @@ platonic-impl-guide/
 - **Default behavior: Generate report WITHOUT modifying code**
 
 **Files Created:**
-- ✅ `SKILL.md` - Complete rewrite focusing on spec validation (197 lines)
-- ✅ `README.md` - Comprehensive documentation (289 lines)
+- ✅ `SKILL.md` - Complete rewrite focusing on spec validation and docs (197 lines)
 - ✅ `references/REFERENCE.md` - Detailed review procedures (1000+ lines)
 - ✅ `assets/review-checklist.md` - Review checklist template
 - ✅ `assets/pr-review-template.md` - PR review template
@@ -141,9 +139,8 @@ platonic-impl-guide/
 **File Structure:**
 ```
 platonic-code-specs/
-├── SKILL.md              # Agent Skills definition
-├── README.md             # User documentation
-├── references/           # Reference documentation
+├── SKILL.md              # Agent Skills definition and docs
+├── references/            # Reference documentation
 │   ├── REFERENCE.md      # Complete guide
 │   └── *.md              # 8 operation references
 └── assets/               # Templates
@@ -174,9 +171,8 @@ platonic-code-specs/
 **File Structure:**
 ```
 platonic-code-review/
-├── SKILL.md              # Agent Skills definition
-├── README.md             # User documentation
-├── references/           # Review procedures
+├── SKILL.md              # Agent Skills definition and docs
+├── references/            # Review procedures
 │   └── REFERENCE.md      # Complete review guide
 └── assets/               # Templates
     ├── review-checklist.md
@@ -225,7 +221,7 @@ Both skills now fully comply with [Agent Skills specification](https://agentskil
 - Templates in assets/
 
 ### 3. Clear Documentation
-- Comprehensive README files
+- SKILL.md as primary skill documentation
 - Detailed REFERENCE.md guides
 - Practical examples
 
@@ -263,7 +259,6 @@ Both skills now fully comply with [Agent Skills specification](https://agentskil
 - `.claude-plugin/marketplace.json`
 - `README.md`
 - `skills/platonic-code-specs/SKILL.md`
-- `skills/platonic-code-specs/README.md`
 - `skills/platonic-code-specs/references/init-specs.md`
 
 ### Renamed (platonic-code-specs):
@@ -274,7 +269,6 @@ Both skills now fully comply with [Agent Skills specification](https://agentskil
 - `skills/platonic-code-specs/references/REFERENCE.md`
 - `skills/platonic-code-review/` (entire directory)
 - `skills/platonic-code-review/SKILL.md`
-- `skills/platonic-code-review/README.md`
 - `skills/platonic-code-review/references/REFERENCE.md`
 - `skills/platonic-code-review/assets/review-checklist.md`
 - `skills/platonic-code-review/assets/pr-review-template.md`

@@ -377,4 +377,4 @@ This skill validates spec-to-code consistency through systematic 6-step process:
 
 **Remember**: Default is report-only. Code modifications require explicit user consent.
 
-For detailed examples and edge cases, see SKILL.md and README.md.
+For detailed examples and edge cases, see SKILL.md.
