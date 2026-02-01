@@ -50,6 +50,22 @@ Manage RFC-style specifications with AI-driven operations.
 
 ---
 
+### 📐 platonic-impl-guide
+
+Create concrete, project-specific implementation designs from RFC specifications.
+
+**Capabilities:**
+- Create implementation guides that translate RFC specs into implementation-ready designs
+- Validate guides against RFCs for contradictions
+- Update guides when RFCs change
+- Language-aware and framework-aware technical architecture
+
+**Use when:** Planning implementation of RFCs, creating detailed technical designs, documenting implementation architecture
+
+[**→ Full Documentation**](skills/platonic-impl-guide/SKILL.md)
+
+---
+
 ### ✅ platonic-code-review
 
 Review code implementation against specifications for consistency validation.
@@ -64,22 +80,6 @@ Review code implementation against specifications for consistency validation.
 **Use when:** Validating implementation against specs, checking requirements compliance, ensuring spec-to-code consistency
 
 [**→ Full Documentation**](skills/platonic-code-review/SKILL.md)
-
----
-
-### 📐 platonic-impl-guide
-
-Create concrete, project-specific implementation designs from RFC specifications.
-
-**Capabilities:**
-- Create implementation guides that translate RFC specs into implementation-ready designs
-- Validate guides against RFCs for contradictions
-- Update guides when RFCs change
-- Language-aware and framework-aware technical architecture
-
-**Use when:** Planning implementation of RFCs, creating detailed technical designs, documenting implementation architecture
-
-[**→ Full Documentation**](skills/platonic-impl-guide/SKILL.md)
 
 ## Installation
 
