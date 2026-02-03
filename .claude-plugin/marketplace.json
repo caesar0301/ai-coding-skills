@@ -26,6 +26,14 @@
   },
   "skills": [
     {
+      "name": "platonic-coding",
+      "path": "skills/platonic-coding",
+      "description": "Orchestrate the full Platonic Coding workflow from design draft to RFC, impl guide, code, and review. Always shows current phase; invokes platonic-code-specs, platonic-impl-guide, and platonic-code-review",
+      "version": "1.0.0",
+      "category": "workflow",
+      "tags": ["workflow", "platonic-coding", "design-draft", "rfc", "implementation-guide", "code-review", "phase"]
+    },
+    {
       "name": "platonic-code-specs",
       "path": "skills/platonic-code-specs",
       "description": "Manage RFC-style specifications with templates, validation, and dynamic generation of history, index, and namings files",
