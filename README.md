@@ -17,24 +17,6 @@ See a full description in [PLATONIC_CODING_MANIFESTO.md](https://github.com/caes
 
 This repository provides production-ready Agent Skills that enhance Platonic Coding. All skills follow the [Agent Skills specification](https://agentskills.io/specification) for maximum compatibility across AI coding agents.
 
-### 🔄 platonic-coding
-
-Orchestrate the full Platonic Coding workflow from conceptual design to RFC, implementation guide, code, and review.
-
-**Capabilities:**
-- Always show current workflow phase (0–4, then FINISHED)
-- Phase 0: Interactive chat and optional items → design draft (default: `docs/drafts/`)
-- Phase 1: Generate RFC from draft (may ask for RFC index), then **platonic-code-specs** refine (default: `docs/specs/`)
-- Phase 2: **platonic-impl-guide** to create impl guide from RFC (may ask for RFC index) (default: `docs/impl/`)
-- Phase 3: Run coding agents to implement from guide
-- Phase 4: **platonic-code-review** for code vs specs and impl RFCs
-
-**Use when:** Running the full design → spec → impl guide → code → review workflow with clear phase visibility and handoffs
-
-[**→ Full Documentation**](skills/platonic-coding/SKILL.md)
-
----
-
 ### 📋 platonic-code-specs
 
 Manage RFC-style specifications with AI-driven operations.
@@ -82,6 +64,24 @@ Review code implementation against specifications for consistency validation.
 **Use when:** Validating implementation against specs, checking requirements compliance, ensuring spec-to-code consistency
 
 [**→ Full Documentation**](skills/platonic-code-review/SKILL.md)
+
+---
+
+### 🔄 platonic-coding
+
+Orchestrate the full Platonic Coding workflow from conceptual design to RFC, implementation guide, code, and review.
+
+**Capabilities:**
+- Always show current workflow phase (0–4, then FINISHED)
+- Phase 0: Interactive chat and optional items → design draft (default: `docs/drafts/`)
+- Phase 1: Generate RFC from draft (may ask for RFC index), then **platonic-code-specs** refine (default: `docs/specs/`)
+- Phase 2: **platonic-impl-guide** to create impl guide from RFC (may ask for RFC index) (default: `docs/impl/`)
+- Phase 3: Run coding agents to implement from guide
+- Phase 4: **platonic-code-review** for code vs specs and impl RFCs
+
+**Use when:** Running the full design → spec → impl guide → code → review workflow with clear phase visibility and handoffs
+
+[**→ Full Documentation**](skills/platonic-coding/SKILL.md)
 
 ## Installation
 
