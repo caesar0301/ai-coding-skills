@@ -40,7 +40,7 @@ The guide's coding plan (Section 10) already contains the ordered task breakdown
 
 If the guide lacks a coding plan, derive one and add it as Section 10 of the guide (never as a separate file).
 
-**Confirmation Gate**: Present the plan to the user unless auto mode is active.
+**Confirmation Gate**: Present the plan to the user by **calling the `ask_user` tool** with the plan summary and an approval question, unless auto mode is active. Plain-text questions do not pause the loop — `ask_user` ensures the goal resumes on the same turn once the user answers.
 
 ### Step 3: Execute Coding Tasks
 
@@ -86,7 +86,7 @@ If the implementation guide is incomplete or ambiguous:
 1. **Do not invent behavior**: Never add functionality not described in the guide or RFC
 2. **Document the gap**: Note what is missing and where
 3. **Suggest guide update**: Recommend updating the guide before implementing the missing piece
-4. **Ask the user**: When ambiguity blocks progress, ask for clarification
+4. **Ask the user**: When ambiguity blocks progress, **call the `ask_user` tool** for clarification. Plain-text questions do not pause the loop — `ask_user` pauses and resumes on the same turn once the user answers.
 
 ## Example
 

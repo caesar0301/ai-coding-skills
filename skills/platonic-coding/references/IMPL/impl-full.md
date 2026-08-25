@@ -34,7 +34,7 @@ Create implementation guide (follow `create-guide.md`). Assign the next sequenti
 
 Also author the **coding plan** (Section 10 of the guide): break the guide into ordered tasks — one file per task, dependency order, test pairing. Use `assets/impl-guide-template.md`, which includes the Coding Plan section. The coding plan is part of the guide, not a separate artifact.
 
-**Confirmation Gate**: Present summary (module structure, key types, design decisions, task breakdown). Skip if auto-mode or "no confirmations".
+**Confirmation Gate**: Present summary (module structure, key types, design decisions, task breakdown) by **calling the `ask_user` tool** with the summary and an approval question. Skip if auto-mode or "no confirmations". Plain-text questions do not pause the loop — use `ask_user` so the goal resumes on the same turn once the user answers.
 
 ### Step 3: Coding
 Execute the guide's coding plan: follow guide as law, no speculative design, use language idioms, integrate with existing code, write unit + integration tests, verify build.

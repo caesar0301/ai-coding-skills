@@ -59,6 +59,8 @@ Brainstorming is an **internal mode** of this skill (formerly the standalone `pl
 
 ## When to Ask the User
 
+At every gate below, **call the `ask_user` tool** — do not write the question as plain text. Plain-text questions do not pause the loop; `ask_user` pauses the loop and resumes on the same turn once the user answers.
+
 - **Phase 1**: RFC number/index for the new or updated RFC, if not specified. Whether to use BRAINSTORM mode for conceptual design.
 - **Phase 2**: RFC number/index for which to implement, if not specified. Whether to use BRAINSTORM mode for design refinement. The IMPL mode operation handles its own confirmation gates for the impl guide (which includes the coding plan).
 - **Phase 3**: Which code paths and RFC(s) to review, if not specified.

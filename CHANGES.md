@@ -2,6 +2,31 @@
 
 This document summarizes the changes made to align the platonic-coding project with the [Agent Skills](https://agentskills.io) standard.
 
+## Version 2.6.0 — `ask_user` Tool at Confirmation Gates (2026-08-25)
+
+### Structured clarification at every gate
+
+**Changed:** Every "ask the user" / "confirm" / "approve" / "routing menu" instruction now tells the agent to call the `ask_user` tool rather than write the question as plain text. This applies to BRAINSTORM mode (clarifying questions, design approval, draft review, post-draft routing), IMPL mode (confirmation gates, ambiguity blockers), and the WORKFLOW phases (RFC index confirmation, handoffs).
+
+### Why
+
+The runtime clarification relay only engages on a structured `ask_user` interrupt. Plain-text questions are invisible to it: the loop does not pause, the goal finalizes without the user's input, and the user's reply starts a brand-new goal instead of resuming the paused one. This caused loop 67c8 to run a 6-goal brainstorm as disconnected turns rather than a single paused-and-resumed conversation.
+
+### Updated Files
+
+- ✅ `skills/platonic-coding/SKILL.md` — new "Confirmation Gates & Clarifications" section
+- ✅ `skills/platonic-coding/references/BRAINSTORM/brainstorm.md` — `<GATE-INSTRUCTION>` block; checklist steps 2/4/7/8, Process, User Review Gate, Post-Draft Routing, Key Principles
+- ✅ `skills/platonic-coding/references/IMPL/impl-full.md` — confirmation gate now uses `ask_user`
+- ✅ `skills/platonic-coding/references/IMPL/impl-code.md` — confirmation gate + "Ask the user" step now use `ask_user`
+- ✅ `skills/platonic-coding/references/WORKFLOW/workflow-overview.md` — "When to Ask the User" uses `ask_user`
+- ✅ `skills/platonic-coding/references/WORKFLOW/workflow-phase-1.md` — RFC index + handoff use `ask_user`
+- ✅ `skills/platonic-coding/references/WORKFLOW/workflow-phase-2.md` — RFC identification + gate + handoff use `ask_user`
+- ✅ `skills/platonic-coding/references/WORKFLOW/workflow-phase-3.md` — pre-code-change consent uses `ask_user`
+
+### Runtime counterpart
+
+Requires the host `ask_user` StructuredTool (soothe package: `soothe.coreagent.tools.ask_user`), which emits the `interrupt({"type":"ask_user","questions":[...]})` that the clarification relay captures.
+
 ## Version 2.5.1 — Coding Plan Merged into Implementation Guide (2026-08-15)
 
 ### Single IG artifact

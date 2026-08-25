@@ -33,7 +33,7 @@
 ## Output
 
 - **Review and compliance report** (from REVIEW mode).
-- Clear list of findings and recommended actions; ask the user before making any code changes.
+- Clear list of findings and recommended actions; **call `ask_user`** to get the user's consent before making any code changes. Plain-text questions do not pause the loop — `ask_user` ensures the goal resumes on the same turn once the user answers.
 
 ## Handoff to FINISHED
 

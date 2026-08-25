@@ -10,6 +10,17 @@ This mode is the in-skill successor to the standalone `platonic-brainstorming` s
 Within brainstorm mode, do NOT write any code, scaffold any project, generate any RFC, or take any implementation action until you have presented a design and the user has explicitly approved it. The only output of this mode is a design draft plus a downstream routing choice.
 </HARD-GATE>
 
+<GATE-INSTRUCTION>
+Every "ask the user" / "confirm" / "approve" / "present options" step in this mode is a **gate**. At every gate, call the `ask_user` tool with the question — do NOT write the question as plain text.
+
+The runtime clarification relay only engages on a structured `ask_user` tool call. A plain-text question is invisible to it: the loop will not pause, the goal will finalize without the user's input, and the user's typed reply will start a brand-new goal instead of resuming this one. Calling `ask_user` pauses the loop and resumes on the same turn once the user answers.
+
+- Prefer **one question per `ask_user` call** (matches "one question at a time" below).
+- For a multiple-choice decision (e.g. "Option A, B, or C?"), put the options in the question text of a single call.
+- For sequential independent questions, make one `ask_user` call per question and wait for each answer before asking the next.
+- If the user said "no confirmations" or picked quick-pass routing, skip approval gates — but still call `ask_user` when ambiguity *blocks* progress.
+</GATE-INSTRUCTION>
+
 ## Anti-Pattern: "This Is Too Simple To Need A Design"
 
 For work that enters Platonic Coding phases, even "simple" changes deserve an explicit design pass so assumptions are surfaced early. The design can be short (a few sentences for truly simple projects), but it should still be presented and approved before the workflow advances.
@@ -19,13 +30,13 @@ For work that enters Platonic Coding phases, even "simple" changes deserve an ex
 Create tasks for the applicable steps below and follow them in process order:
 
 1. **Explore project context** — check files, docs, recent commits
-2. **Ask clarifying questions** — one at a time, understand purpose / constraints / success criteria
-3. **Propose 2–3 approaches** — with trade-offs and your recommendation
-4. **Present design** — validate sections incrementally as needed, then get explicit approval on the overall design before drafting
+2. **Ask clarifying questions** — one at a time, understand purpose / constraints / success criteria. **Call the `ask_user` tool** for each question (see GATE-INSTRUCTION above).
+3. **Propose 2–3 approaches** — with trade-offs and your recommendation. **Call `ask_user`** with the approach choice (options A/B/C + your recommendation).
+4. **Present design** — validate sections incrementally as needed, then **call `ask_user`** to get explicit approval on the overall design before drafting.
 5. **Write design draft** — save to `docs/drafts/YYYY-MM-DD-<topic>-design.md` by default, or update the user-provided draft if one already exists
 6. **Draft self-review** — quick inline check for placeholders, contradictions, ambiguity, scope (see below)
-7. **User reviews written draft** — ask user to review the draft file before proceeding
-8. **Post-draft routing** — present the alternative paths below and route to the chosen one
+7. **User reviews written draft** — **call `ask_user`** asking the user to review the draft file and approve or request changes before proceeding.
+8. **Post-draft routing** — present the alternative paths below via `ask_user` (numbered menu) and route to the chosen one.
 
 ## Process Flow
 
@@ -67,9 +78,9 @@ Hand off to Phase 1 (RFC) or Phase 2 (impl)
 - Check out the current project state first (files, docs, recent commits)
 - Before asking detailed questions, assess scope: if the request describes multiple independent subsystems (e.g., "build a platform with chat, file storage, billing, and analytics"), flag this immediately. Don't spend questions refining details of a project that needs to be decomposed first.
 - If the project is too large for a single design draft, help the user decompose into sub-projects: what are the independent pieces, how do they relate, what order should they be built? Then brainstorm the first sub-project through the normal design flow. Each sub-project gets its own draft → downstream Platonic stages → implementation cycle.
-- For appropriately-scoped projects, ask questions one at a time to refine the idea
-- Prefer multiple choice questions when possible, but open-ended is fine too
-- Only one clarifying or design question per message — if a topic needs more exploration, break it into multiple questions
+- For appropriately-scoped projects, ask questions one at a time to refine the idea — **call `ask_user` for each** (one question per call)
+- Prefer multiple choice questions when possible, but open-ended is fine too — put the choices in the question text of a single `ask_user` call
+- Only one clarifying or design question per `ask_user` call — if a topic needs more exploration, break it into multiple calls and wait for each answer
 - Focus on understanding: purpose, constraints, success criteria
 
 **Exploring approaches:**
@@ -82,8 +93,8 @@ Hand off to Phase 1 (RFC) or Phase 2 (impl)
 
 - Once you believe you understand what you're building, present the design
 - Scale each section to its complexity: a few sentences if straightforward, up to 200–300 words if nuanced
-- Validate sections incrementally when that helps the user stay aligned, but do not treat those checkpoints as final approval
-- Get one explicit approval on the overall design before you write the draft
+- Validate sections incrementally when that helps the user stay aligned (an `ask_user` per section is fine), but do not treat those checkpoints as final approval
+- **Call `ask_user`** to get one explicit approval on the overall design before you write the draft
 - Cover: architecture, components, data flow, error handling, testing
 - Be ready to go back and clarify if something doesn't make sense
 
@@ -122,17 +133,17 @@ Fix any issues inline. This self-review is the internal cleanup pass before the 
 For a deeper, independent check, you may dispatch the design-draft reviewer subagent using the template at `assets/brainstorming/spec-document-reviewer-prompt.md`. This is optional — the inline self-review above is the baseline.
 
 **User Review Gate:**
-After the draft review loop passes, ask the user to review the written draft before proceeding:
+After the draft review loop passes, **call `ask_user`** to ask the user to review the written draft before proceeding:
 
-> "Design draft written to `<path>`. Please review it and let me know if you want to make any changes before we route to the next step."
+> Question text: "Design draft written to `<path>`. Please review it — approve, or describe changes you want before we route to the next step."
 
-Wait for the user's response. If they request changes, make them and re-run the draft review loop. Only proceed to routing once the user approves.
+The `ask_user` call pauses the loop and resumes once the user answers. If they request changes, make them and re-run the draft review loop, then call `ask_user` again. Only proceed to routing once the user approves.
 
 ## Post-Draft Routing (alternative paths)
 
 Once the draft is approved, do **not** assume the only next step is "create a new RFC." First check `docs/specs/` and `docs/impl/` for existing RFCs or IGs related to this draft's topic (match by semantic name / topic keywords), then present a routing menu so the user chooses how to continue.
 
-Present the menu as a numbered list with a one-line description per option, and lead with a recommendation based on what you found (e.g., "no existing RFC for this topic → recommend #4"). The user picks a number or describes a combination.
+Present the menu as a numbered list with a one-line description per option, and lead with a recommendation based on what you found (e.g., "no existing RFC for this topic → recommend #4"). **Call `ask_user`** with the full numbered menu as the question text so the user can pick a number or describe a combination. The loop pauses and resumes on the same turn once they choose.
 
 | # | Path | When to use | Routes to |
 |---|------|-------------|-----------|
@@ -152,8 +163,9 @@ Present the menu as a numbered list with a one-line description per option, and 
 
 ## Key Principles
 
-- **One question at a time** — don't overwhelm with multiple questions
-- **Multiple choice preferred** — easier to answer than open-ended when possible
+- **Use `ask_user` at every gate** — questions, approvals, and routing choices must go through the `ask_user` tool, not plain text (see GATE-INSTRUCTION)
+- **One question at a time** — don't overwhelm with multiple questions; one `ask_user` call per independent question
+- **Multiple choice preferred** — easier to answer than open-ended when possible; put the options in a single `ask_user` call
 - **YAGNI ruthlessly** — remove unnecessary features from all designs
 - **Explore alternatives** — always propose 2–3 approaches before settling
 - **Incremental validation** — use section-by-section checkpoints to keep alignment, then get explicit approval on the overall design before drafting

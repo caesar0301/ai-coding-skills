@@ -3,7 +3,7 @@ name: platonic-coding
 description: Intelligent orchestrator for the Platonic Coding lifecycle. Auto-detects the user's intent and project state, then routes to the right next step—brainstorm a design, initialize a project, run the recovery flow for existing code, formalize drafts into RFCs, refine specs, implement from guides with tests, or review code compliance. Single entry point for the complete specification-driven development lifecycle, with structured design exploration built in.
 license: MIT
 metadata:
-  version: "2.5.1"
+  version: "2.6.0"
   author: "Xiaming Chen"
   category: "workflow"
   replaces:
@@ -55,6 +55,18 @@ Before inspecting project state, scan the user's natural-language request for **
 **Note**: `.platonic.yml` is optional. The skill auto-detects project metadata (name, language, framework) from host manifests and uses built-in default paths (`docs/specs`, `docs/impl`, `docs/drafts`). A `.platonic.yml` is only needed to override defaults or set custom spec stages.
 
 **Override** with canonical operations: `brainstorm`, `init-scaffold`, `init-scan`, `specs-refine`, `impl-full`, `review`, `workflow --phase <N>`.
+
+## Confirmation Gates & Clarifications
+
+Many operations pause for user input — design approval, confirmation gates, routing menus, ambiguity blockers. **At every such gate, call the `ask_user` tool** with the question(s). Do not write questions as plain text.
+
+Plain-text questions are invisible to the runtime clarification relay: the loop will not pause, the goal will finalize, and the user's reply will start a brand-new goal instead of resuming the paused one. The `ask_user` tool emits a structured interrupt that pauses the loop and resumes on the same turn once the user answers.
+
+- **One question per call** when the questions are independent (aligns with "one question at a time" in BRAINSTORM mode).
+- Present multiple-choice options as the *content* of a single question (e.g. "Which design: A) ... B) ... C) ...?") so the user picks one.
+- Skip the gate only when the user explicitly said "no confirmations" or auto/quick-pass mode is active — but even then, if ambiguity *blocks* progress, call `ask_user` rather than guessing.
+
+See `references/BRAINSTORM/brainstorm.md` for the full gate taxonomy.
 
 ## Core Workflow Phases
 
