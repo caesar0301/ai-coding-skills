@@ -4,7 +4,7 @@ Create the Platonic Coding infrastructure for a project.
 
 ## Objective
 
-Set up the directory structure, configuration file, RFC infrastructure, and templates needed for Platonic Coding.
+Set up the directory structure, configuration file, and RFC infrastructure needed for Platonic Coding. Spec templates are kept in the skill's `assets/` directory and are not copied into the user project.
 
 ## Inputs
 
@@ -61,19 +61,9 @@ If overrides are needed:
 4. Write output files to specs directory
 5. **Skip files that already exist**
 
-### Step 4: Create Spec Templates
+**Note**: Spec templates (`rfc-standard.md`, `rfc-template.md`, design templates) are **not** copied into the user project. They live in the skill's `assets/` directory and are read from there when needed (e.g., compliance checks, RFC generation). This avoids duplicating templates into every project.
 
-1. Create `<specs-path>/templates/` directory
-2. Read and process `assets/templates/template-rfc-standard.md` → `templates/rfc-standard.md`
-3. Copy template files from `assets/specs/`:
-   - `rfc-template.md` → `templates/rfc-template.md`
-   - `template-conceptual-design.md` → `templates/conceptual-design.md`
-   - `template-architecture-design.md` → `templates/architecture-design.md`
-   - `template-impl-interface-design.md` → `templates/impl-interface-design.md`
-4. Replace `{{PROJECT_NAME}}` in each template (except rfc-template.md which is generic)
-5. **Skip files that already exist**
-
-### Step 5: Create Impl Directory
+### Step 4: Create Impl Directory
 
 1. Create `<impl-path>/` directory
 2. Read `assets/templates/template-impl-readme.md`
@@ -81,7 +71,7 @@ If overrides are needed:
 4. Write to `<impl-path>/README.md`
 5. **Skip if file already exists**
 
-### Step 6: Create Drafts Directory
+### Step 5: Create Drafts Directory
 
 1. Create `<drafts-path>/` directory
 2. Read `assets/templates/template-drafts-readme.md`
@@ -89,14 +79,13 @@ If overrides are needed:
 4. Write to `<drafts-path>/README.md`
 5. **Skip if file already exists**
 
-### Step 7: Verify
+### Step 6: Verify
 
 Confirm all expected files exist:
 - `.platonic.yml` — **only if overrides were requested**; absent is the normal case
 - `<specs-path>/rfc-history.md`
 - `<specs-path>/rfc-index.md`
 - `<specs-path>/rfc-namings.md`
-- `<specs-path>/templates/` (5 template files, including `rfc-standard.md`)
 - `<impl-path>/README.md`
 - `<drafts-path>/README.md`
 

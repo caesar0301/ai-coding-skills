@@ -134,13 +134,7 @@ Templates use `{{PLACEHOLDER}}` syntax. Common variables:
 │   │   ├── rfc-index.md             # Spec index
 │   │   ├── rfc-namings.md           # Terminology reference
 │   │   ├── RFC-001-world-view.md   # Individual RFC
-│   │   ├── RFC-002-message-queue.md
-│   │   └── templates/               # Conventions & templates for future RFCs
-│   │       ├── rfc-standard.md      # RFC process & conventions
-│   │       ├── rfc-template.md
-│   │       ├── conceptual-design.md
-│   │       ├── architecture-design.md
-│   │       └── impl-interface-design.md
+│   │   └── RFC-002-message-queue.md
 │   │
 │   ├── impl/                       # Implementation guides
 │   │   ├── README.md
@@ -153,6 +147,8 @@ Templates use `{{PLACEHOLDER}}` syntax. Common variables:
 │
 └── <source-code>/                  # Your implementation
 ```
+
+**Note**: Spec templates (`rfc-standard.md`, `rfc-template.md`, design templates) are **not** copied into the user project. They live in the skill's `assets/` directory and are read from there when needed (RFC generation, compliance checks). This avoids duplicating templates into every project.
 
 ---
 

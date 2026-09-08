@@ -2,25 +2,25 @@
 
 ## Objective
 
-Validate that all RFC files comply with the conventions defined in `templates/rfc-standard.md`.
+Validate that all RFC files comply with the conventions defined in `assets/templates/template-rfc-standard.md`.
 
 ## Inputs
 
 - **Specs Directory**: Path to the specs directory
-- **Reference**: `templates/rfc-standard.md` (for validation rules; fall back to root `rfc-standard.md` if present in older projects)
+- **Reference**: `assets/templates/template-rfc-standard.md` (skill asset, for validation rules; fall back to `<specs-path>/templates/rfc-standard.md` or root `rfc-standard.md` if present in older projects)
 
 ## Steps
 
 1. **Read rfc-standard.md**
-   - Prefer `<specs-path>/templates/rfc-standard.md`
-   - Fall back to `<specs-path>/rfc-standard.md` for projects scaffolded before this layout
+   - Prefer the skill asset `assets/templates/template-rfc-standard.md`
+   - Fall back to `<specs-path>/templates/rfc-standard.md` or `<specs-path>/rfc-standard.md` for projects scaffolded before templates were kept in the skill
    - Understand required metadata fields
    - Understand status values and transitions
    - Understand structure requirements
    - Understand formatting conventions
 
 2. **Scan All RFC Files**
-   - Find all files matching `RFC-*.md` pattern (specs root only; skip `templates/`)
+   - Find all files matching `RFC-*.md` pattern (specs root only)
    - Exclude supporting files: `rfc-history.md`, `rfc-index.md`, `rfc-namings.md`
 
 3. **Check Metadata Fields**
@@ -139,7 +139,7 @@ After checking, verify:
 - [ ] Base RFC numbers are contiguous from `001` (or gaps are intentional/user-requested)
 - [ ] Frozen RFCs are not modified directly
 - [ ] Versioned RFCs follow correct format
-- [ ] Structure follows `templates/rfc-standard.md` conventions
+- [ ] Structure follows `assets/templates/template-rfc-standard.md` conventions
 - [ ] Formatting is consistent
 
 ## Notes
@@ -152,7 +152,7 @@ After checking, verify:
 
 ## Reference
 
-Always refer to `templates/rfc-standard.md` for:
+Always refer to `assets/templates/template-rfc-standard.md` for:
 - Exact field requirements
 - Status transition rules
 - Versioning rules

@@ -16,7 +16,6 @@ Master index of all RFC specifications.
 
 | Document | Purpose |
 |----------|---------|
-| [rfc-standard.md](templates/rfc-standard.md) | RFC process and conventions |
 | [rfc-namings.md](rfc-namings.md) | Terminology reference |
 | [rfc-history.md](rfc-history.md) | Change history |
 | [rfc-index.md](rfc-index.md) | This document |
@@ -52,6 +51,5 @@ Master index of all RFC specifications.
 
 ## Related Documents
 
-- [rfc-standard.md](templates/rfc-standard.md) - RFC process and conventions
 - [rfc-history.md](rfc-history.md) - Change history
 - [rfc-namings.md](rfc-namings.md) - Terminology reference

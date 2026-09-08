@@ -2,6 +2,31 @@
 
 This document summarizes the changes made to align the platonic-coding project with the [Agent Skills](https://agentskills.io) standard.
 
+## Version 2.7.0 — Templates Kept in Skill, Not Copied to User Projects (2026-09-08)
+
+### Spec templates no longer scaffolded into user projects
+
+**Changed:** `init-scaffold` no longer creates a `docs/specs/templates/` directory or copies template files (`rfc-standard.md`, `rfc-template.md`, `conceptual-design.md`, `architecture-design.md`, `impl-interface-design.md`) into the user project. Templates are read directly from the skill's `assets/` directory when needed (RFC generation, compliance checks). This eliminates redundant template duplication across every project.
+
+### Why
+
+Copying templates into every user project was redundant — the skill already owns the templates in its `assets/` directory. When a template needs to be referenced (e.g., `rfc-standard.md` for compliance validation), the skill reads it from `assets/templates/` directly. The old `docs/specs/templates/` directory in user projects was never user-authored content; it was a copy of skill-owned conventions. Removing it simplifies the project structure and ensures all projects always use the latest template versions.
+
+### Backward compatibility
+
+Projects scaffolded before this version may still have a `docs/specs/templates/` directory. Compliance checks fall back to `<specs-path>/templates/rfc-standard.md` (or the root `rfc-standard.md` for even older projects) when present. New projects will not have this directory.
+
+### Updated Files
+
+- ✅ `skills/platonic-coding/references/INIT/init-scaffold.md` — removed Step 4 (Create Spec Templates); renumbered Steps 5–7 → 4–6; updated verify checklist
+- ✅ `skills/platonic-coding/references/SPECS/specs-check-compliance.md` — reads `rfc-standard.md` from skill `assets/templates/`; backward-compat fallback to project `templates/`
+- ✅ `skills/platonic-coding/references/SPECS/specs-refine.md` — references skill asset for compliance
+- ✅ `skills/platonic-coding/references/WORKFLOW/workflow-phase-1.md` — RFC generation references skill template
+- ✅ `skills/platonic-coding/references/SPECS/specs-generate-history.md`, `specs-generate-index.md`, `specs-generate-namings.md`, `specs-validate-consistency.md` — removed "skip `templates/`" from scan instructions (directory no longer exists in new projects)
+- ✅ `skills/platonic-coding/assets/templates/template-rfc-history.md`, `template-rfc-index.md`, `template-rfc-namings.md` — removed links to `templates/rfc-standard.md` (no longer in user project)
+- ✅ `skills/platonic-coding/references/REFERENCE.md` — removed `templates/` from file structure diagram; added note that templates live in the skill
+- ✅ `skills/platonic-coding/SKILL.md`, `.claude-plugin/marketplace.json` — version 2.7.0
+
 ## Version 2.6.0 — `ask_user` Tool at Confirmation Gates (2026-08-25)
 
 ### Structured clarification at every gate

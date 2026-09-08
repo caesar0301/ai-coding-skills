@@ -17,7 +17,7 @@ Extract terminology from all active RFC files and update `rfc-namings.md` to ref
 ## Steps
 
 1. **Identify Active RFCs**
-   - Scan for files matching `RFC-*.md` pattern (specs root only; skip `templates/`)
+   - Scan for files matching `RFC-*.md` pattern (specs root only)
    - Exclude: `rfc-history.md`, `rfc-index.md`, `rfc-namings.md`
    - Exclude versioned RFCs (RFC-NNN-<name>-<letter>.md format)
    - Exclude RFCs with Status "Deprecated"

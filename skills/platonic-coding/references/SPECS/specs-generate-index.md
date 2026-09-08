@@ -11,7 +11,7 @@ Scan all RFC files in the specs directory and generate/update `rfc-index.md` wit
 ## Steps
 
 1. **Scan RFC Files**
-   - Find all files matching pattern `RFC-*.md` in the specs directory (specs root only; skip `templates/`)
+   - Find all files matching pattern `RFC-*.md` in the specs directory (specs root only)
    - Exclude: `rfc-history.md`, `rfc-index.md`, `rfc-namings.md`
    - Separate base RFCs (e.g., `RFC-001-world-view.md`) from versioned RFCs (e.g., `RFC-001-world-view-001.md`)
 
